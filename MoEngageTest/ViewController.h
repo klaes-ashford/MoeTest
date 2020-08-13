@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Source.h"
 @interface ViewController : UIViewController
 @end
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableveiw;
+@property (nonatomic) id <Source> source;
 @end

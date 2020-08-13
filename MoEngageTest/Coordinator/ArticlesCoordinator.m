@@ -9,6 +9,7 @@
 #import "ArticlesCoordinator.h"
 #import <UIKit/UIKit.h>
 #import "ViewController.h"
+#import "ArticleSource.h"
 
 @implementation ArticlesCoordinator
 
@@ -17,12 +18,14 @@
     self = [super init];
     if (self) {
         self.presenter = presenter;
+        self.source = [[ArticleSource alloc] init];
     }
     return self;
 }
 
 - (void)start {
     self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    self.viewController.source = self.source;
     [self.presenter pushViewController:self.viewController animated:true];
 }
 

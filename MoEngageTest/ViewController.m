@@ -21,8 +21,7 @@
     [self.tableveiw setDelegate:self];
     [self.tableveiw registerNib:[UINib nibWithNibName:@"ArticleTableViewCell" bundle:nil] forCellReuseIdentifier:@"articleCell"];
     
-    InternetSource *source = [[InternetSource alloc] init];
-    [source getNews:^(NSDictionary *response, NSError *error) {
+    [self.source getNews:^(NSDictionary *response, NSError *error) {
         MENewsResponse *news = [[MENewsResponse alloc] initWithDictionary:response];
         self->articles = news.articles;
         NSLog(@"news is %@", news);
