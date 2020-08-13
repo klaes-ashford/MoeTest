@@ -7,14 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		207C0E9424E4328C004E8C1D /* ArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 207C0E9224E4328C004E8C1D /* ArticleTableViewCell.m */; };
+		207C0E9524E4328C004E8C1D /* ArticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 207C0E9324E4328C004E8C1D /* ArticleTableViewCell.xib */; };
+		207C0E9924E47767004E8C1D /* AppCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 207C0E9824E47767004E8C1D /* AppCoordinator.m */; };
+		207C0E9D24E47ED2004E8C1D /* ArticlesCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 207C0E9C24E47ED2004E8C1D /* ArticlesCoordinator.m */; };
+		207C0E9F24E481C8004E8C1D /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 207C0E9E24E481C8004E8C1D /* ViewController.xib */; };
 		3E76E39C24DAABF400D47477 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E76E39B24DAABF400D47477 /* AppDelegate.m */; };
-		3E76E39F24DAABF400D47477 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E76E39E24DAABF400D47477 /* SceneDelegate.m */; };
 		3E76E3A224DAABF400D47477 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E76E3A124DAABF400D47477 /* ViewController.m */; };
-		3E76E3A524DAABF400D47477 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E76E3A324DAABF400D47477 /* Main.storyboard */; };
 		3E76E3A724DAABF600D47477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E76E3A624DAABF600D47477 /* Assets.xcassets */; };
 		3E76E3AA24DAABF600D47477 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E76E3A824DAABF600D47477 /* LaunchScreen.storyboard */; };
 		3E76E3AD24DAABF600D47477 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E76E3AC24DAABF600D47477 /* main.m */; };
 		3E76E3B724DAABF600D47477 /* MoEngageTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E76E3B624DAABF600D47477 /* MoEngageTestTests.m */; };
+		3E76E3C424DABD9800D47477 /* MENewsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E76E3C324DABD9800D47477 /* MENewsResponse.m */; };
+		3E76E3C924DAEC3600D47477 /* InternetSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E76E3C824DAEC3600D47477 /* InternetSource.m */; };
+		3E76E3CB24DB337C00D47477 /* news.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E76E3CA24DB337C00D47477 /* news.json */; };
+		3E76E3CE24DB43D500D47477 /* MockSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E76E3CD24DB43D500D47477 /* MockSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,14 +35,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		207C0E9124E4328C004E8C1D /* ArticleTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleTableViewCell.h; sourceTree = "<group>"; };
+		207C0E9224E4328C004E8C1D /* ArticleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleTableViewCell.m; sourceTree = "<group>"; };
+		207C0E9324E4328C004E8C1D /* ArticleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleTableViewCell.xib; sourceTree = "<group>"; };
+		207C0E9624E47719004E8C1D /* Coordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Coordinator.h; sourceTree = "<group>"; };
+		207C0E9724E47767004E8C1D /* AppCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppCoordinator.h; sourceTree = "<group>"; };
+		207C0E9824E47767004E8C1D /* AppCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppCoordinator.m; sourceTree = "<group>"; };
+		207C0E9B24E47ED2004E8C1D /* ArticlesCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticlesCoordinator.h; sourceTree = "<group>"; };
+		207C0E9C24E47ED2004E8C1D /* ArticlesCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticlesCoordinator.m; sourceTree = "<group>"; };
+		207C0E9E24E481C8004E8C1D /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		3E76E39724DAABF400D47477 /* MoEngageTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoEngageTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E76E39A24DAABF400D47477 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3E76E39B24DAABF400D47477 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3E76E39D24DAABF400D47477 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		3E76E39E24DAABF400D47477 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		3E76E3A024DAABF400D47477 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		3E76E3A124DAABF400D47477 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		3E76E3A424DAABF400D47477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3E76E3A624DAABF600D47477 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E76E3A924DAABF600D47477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E76E3AB24DAABF600D47477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,6 +56,14 @@
 		3E76E3B224DAABF600D47477 /* MoEngageTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoEngageTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E76E3B624DAABF600D47477 /* MoEngageTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoEngageTestTests.m; sourceTree = "<group>"; };
 		3E76E3B824DAABF600D47477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E76E3C224DABD9800D47477 /* MENewsResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MENewsResponse.h; sourceTree = "<group>"; };
+		3E76E3C324DABD9800D47477 /* MENewsResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MENewsResponse.m; sourceTree = "<group>"; };
+		3E76E3C624DAEBE800D47477 /* Source.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Source.h; sourceTree = "<group>"; };
+		3E76E3C724DAEC3600D47477 /* InternetSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InternetSource.h; sourceTree = "<group>"; };
+		3E76E3C824DAEC3600D47477 /* InternetSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InternetSource.m; sourceTree = "<group>"; };
+		3E76E3CA24DB337C00D47477 /* news.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = news.json; sourceTree = "<group>"; };
+		3E76E3CC24DB43D500D47477 /* MockSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MockSource.h; sourceTree = "<group>"; };
+		3E76E3CD24DB43D500D47477 /* MockSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MockSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +84,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2061BD8024E595AE00971239 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				207C0E9624E47719004E8C1D /* Coordinator.h */,
+				207C0E9B24E47ED2004E8C1D /* ArticlesCoordinator.h */,
+				207C0E9C24E47ED2004E8C1D /* ArticlesCoordinator.m */,
+				207C0E9724E47767004E8C1D /* AppCoordinator.h */,
+				207C0E9824E47767004E8C1D /* AppCoordinator.m */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2061BD8124E5961B00971239 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3E76E3CA24DB337C00D47477 /* news.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		207C0E8E24E42F21004E8C1D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				207C0E9124E4328C004E8C1D /* ArticleTableViewCell.h */,
+				207C0E9224E4328C004E8C1D /* ArticleTableViewCell.m */,
+				207C0E9324E4328C004E8C1D /* ArticleTableViewCell.xib */,
+				207C0E9E24E481C8004E8C1D /* ViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		207C0E9A24E47DD9004E8C1D /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				3E76E39A24DAABF400D47477 /* AppDelegate.h */,
+				3E76E39B24DAABF400D47477 /* AppDelegate.m */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
 		3E76E38E24DAABF400D47477 = {
 			isa = PBXGroup;
 			children = (
@@ -84,16 +145,17 @@
 		3E76E39924DAABF400D47477 /* MoEngageTest */ = {
 			isa = PBXGroup;
 			children = (
-				3E76E39A24DAABF400D47477 /* AppDelegate.h */,
-				3E76E39B24DAABF400D47477 /* AppDelegate.m */,
-				3E76E39D24DAABF400D47477 /* SceneDelegate.h */,
-				3E76E39E24DAABF400D47477 /* SceneDelegate.m */,
+				2061BD8124E5961B00971239 /* Resources */,
+				2061BD8024E595AE00971239 /* Coordinator */,
+				207C0E9A24E47DD9004E8C1D /* Application */,
+				207C0E8E24E42F21004E8C1D /* View */,
+				3E76E3C524DAEBB200D47477 /* Protocol */,
+				3E76E3C124DABD3700D47477 /* Model */,
 				3E76E3A024DAABF400D47477 /* ViewController.h */,
 				3E76E3A124DAABF400D47477 /* ViewController.m */,
-				3E76E3A324DAABF400D47477 /* Main.storyboard */,
+				3E76E3AB24DAABF600D47477 /* Info.plist */,
 				3E76E3A624DAABF600D47477 /* Assets.xcassets */,
 				3E76E3A824DAABF600D47477 /* LaunchScreen.storyboard */,
-				3E76E3AB24DAABF600D47477 /* Info.plist */,
 				3E76E3AC24DAABF600D47477 /* main.m */,
 			);
 			path = MoEngageTest;
@@ -106,6 +168,27 @@
 				3E76E3B824DAABF600D47477 /* Info.plist */,
 			);
 			path = MoEngageTestTests;
+			sourceTree = "<group>";
+		};
+		3E76E3C124DABD3700D47477 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3E76E3C724DAEC3600D47477 /* InternetSource.h */,
+				3E76E3C824DAEC3600D47477 /* InternetSource.m */,
+				3E76E3C224DABD9800D47477 /* MENewsResponse.h */,
+				3E76E3C324DABD9800D47477 /* MENewsResponse.m */,
+				3E76E3CC24DB43D500D47477 /* MockSource.h */,
+				3E76E3CD24DB43D500D47477 /* MockSource.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3E76E3C524DAEBB200D47477 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				3E76E3C624DAEBE800D47477 /* Source.h */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,9 +271,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				207C0E9F24E481C8004E8C1D /* ViewController.xib in Resources */,
 				3E76E3AA24DAABF600D47477 /* LaunchScreen.storyboard in Resources */,
 				3E76E3A724DAABF600D47477 /* Assets.xcassets in Resources */,
-				3E76E3A524DAABF400D47477 /* Main.storyboard in Resources */,
+				3E76E3CB24DB337C00D47477 /* news.json in Resources */,
+				207C0E9524E4328C004E8C1D /* ArticleTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,10 +293,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				207C0E9424E4328C004E8C1D /* ArticleTableViewCell.m in Sources */,
 				3E76E3A224DAABF400D47477 /* ViewController.m in Sources */,
+				3E76E3C424DABD9800D47477 /* MENewsResponse.m in Sources */,
+				207C0E9D24E47ED2004E8C1D /* ArticlesCoordinator.m in Sources */,
+				207C0E9924E47767004E8C1D /* AppCoordinator.m in Sources */,
+				3E76E3CE24DB43D500D47477 /* MockSource.m in Sources */,
 				3E76E39C24DAABF400D47477 /* AppDelegate.m in Sources */,
 				3E76E3AD24DAABF600D47477 /* main.m in Sources */,
-				3E76E39F24DAABF400D47477 /* SceneDelegate.m in Sources */,
+				3E76E3C924DAEC3600D47477 /* InternetSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,14 +324,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3E76E3A324DAABF400D47477 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3E76E3A424DAABF400D47477 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3E76E3A824DAABF600D47477 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -370,6 +452,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LY7F8UY65R;
 				INFOPLIST_FILE = MoEngageTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -387,6 +470,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LY7F8UY65R;
 				INFOPLIST_FILE = MoEngageTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
