@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Source.h"
+#import "ArticleListDelegate.h"
 @interface ViewController : UIViewController
 @end
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableveiw;
 @property (nonatomic) id <Source> source;
+@property (nonatomic) id <ArticleListDelegate> delegate;
 @end

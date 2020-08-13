@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "ViewController.h"
 #import "ArticleSource.h"
+#import "ArticleDetailsCoordinator.h"
 
 @implementation ArticlesCoordinator
 
@@ -25,8 +26,14 @@
 
 - (void)start {
     self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    self.viewController.delegate = self;
     self.viewController.source = self.source;
     [self.presenter pushViewController:self.viewController animated:true];
+}
+
+- (void)articleListDidSelect:(nonnull MEArticle *)article {
+    self.detailsCoordinator = [[ArticleDetailsCoordinator alloc] initWith:self.presenter :article];
+    [self.detailsCoordinator start];
 }
 
 @end

@@ -9,9 +9,11 @@
 #import "ArticleSource.h"
 #import "InternetSource.h"
 #import "CacheSource.h"
+#import "MockSource.h"
 @implementation ArticleSource {
     InternetSource *internetSource;
     CacheSource *cacheSource;
+    MockSource *mockSource;
 }
 
 - (instancetype)init
@@ -20,6 +22,8 @@
     if (self) {
         internetSource = [[InternetSource alloc] init];
         cacheSource = [[CacheSource alloc] init];
+        // uncomment to test with mock data
+//        mockSource = [[MockSource alloc] init];
     }
     return self;
 }

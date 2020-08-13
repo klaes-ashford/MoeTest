@@ -47,7 +47,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [self.delegate articleListDidSelect: [articles objectAtIndex:indexPath.row]];
 }
 
 @end

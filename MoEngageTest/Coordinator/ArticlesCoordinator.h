@@ -12,14 +12,16 @@
 #import "ArticleSource.h"
 #import "Source.h"
 #import "ViewController.h"
-
+#import "ArticleListDelegate.h"
+#import "ArticleDetailsCoordinator.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ArticlesCoordinator : NSObject <Coordinator>
+@interface ArticlesCoordinator : NSObject <Coordinator, ArticleListDelegate>
 - (instancetype)initWith:(UINavigationController *) presenter;
 @property (strong, nonatomic) UINavigationController * presenter;
 @property (strong, nonatomic) ViewController * viewController;
 @property (nonatomic) id <Source> source;
+@property (strong, nonatomic) ArticleDetailsCoordinator *detailsCoordinator;
 @end
 
 NS_ASSUME_NONNULL_END
