@@ -14,6 +14,8 @@
 #import "ViewController.h"
 #import "ArticleListDelegate.h"
 #import "ArticleDetailsCoordinator.h"
+#import "ArticleDetailsSource.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ArticlesCoordinator : NSObject <Coordinator, ArticleListDelegate>
@@ -22,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) ViewController * viewController;
 @property (nonatomic) id <Source> source;
 @property (strong, nonatomic) ArticleDetailsCoordinator *detailsCoordinator;
+@property (strong, nonatomic) ArticleDetailsSource *detailsSource;
 @end
 
 NS_ASSUME_NONNULL_END

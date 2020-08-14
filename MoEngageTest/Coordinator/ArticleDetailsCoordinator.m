@@ -12,19 +12,27 @@
 
 @implementation ArticleDetailsCoordinator
 
-- (instancetype)initWith:(UINavigationController *) presenter :(MEArticle *) article
+- (instancetype)initWith:(UINavigationController *) presenter :(MEArticle *) article :(ArticleDetailsSource *) detailsSource
 {
     self = [super init];
     if (self) {
         self.viewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
+        self.viewController.article = article;
         self.article = article;
         self.presenter = presenter;
+        self.detailsSource = detailsSource;
     }
     return self;
 }
 
-- (void)start { 
+- (void)start {
+    self.viewController.request = [self.detailsSource getArticle:self.article];
+    self.viewController.delegate = self;
     [self.presenter pushViewController:self.viewController animated:true];
+}
+
+- (void)storeOffline {
+    [self.detailsSource storeOffline:self.article];
 }
 
 @end

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head -->
+<head>
+  <title>What Is a Singleton and How To Create One In Swift</title>
+  <meta charset="UTF-8">
+  <meta name="author" content="Bart Jacobs">
+  <meta name="keywords" content="Swift,Cocoa,iOS,tvOS,macOS,watchOS,Dependency Injection,Patterns,Singleton,Swift">
+  <meta name="description" content="The singleton pattern is a widely used design pattern in software development. Despite its popularity, it&#39;s often considered an anti-pattern. Why is that? In this tutorial, I explain what the singleton pattern entails and how to create singletons in Swift.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="google-site-verification" content="jpuxdJ8jxPzjqq86zZFhpPCTZCG298fb3GJvLtE2vGY" />
+  <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="vMFyjahQJ8/9TOoD4i3K6U3Web0I3XPd2Bwt0PuqsDyJJQaR6HQcVHvhkILy+sW70ipcWbcQHVXH3wk98tPdlw==" />
+
+  <!-- Favicons -->
+  <!-- Favicons -->
+<link rel="apple-touch-icon" type="image/png" href="https://d23g4mi0z7gexh.cloudfront.net/assets/apple-icon-57x57-67b9daf55a6b31a6d6b6f900e826163a29f73997d8b0b45e8883d6d6baa04f55.png" sizes="57x57" />
+<link rel="apple-touch-icon" type="image/png" href="https://d23g4mi0z7gexh.cloudfront.net/assets/apple-icon-60x60-6ad19d5825ebe76b6a2e3af3d8834f81deb6a6308ad04c925e71b9df1dd1906e.png" sizes="60x60" />
+<link rel="apple-touch-icon" type="image/png" href="https://d23g4mi0z7gexh.cloudfront.net/assets/apple-icon-72x72-7d01fe6d92d34730f7f742751f6d8db3cbd28f5d8d33f0ac0b107cc688e79fcb.png" sizes="72x72" />
+<link rel="apple-touch-icon" type="image/png" href="https://d23g4mi0z7gexh.cloudfront.net/assets/apple-icon-76x76-015b3f700b4164bd8530ef46aecc7920f027ea60813226fa4b4540cc248deb3b.png" sizes="76x76" />
+<link rel="apple-touch-icon" type="image/png" href="https://d23g4mi0z7gexh.cloudfront.net/assets/apple-icon-114x114-61e9f67abbb16cdfaf3251aa3cd0245aba8425f0464128e39ca70d691e6a53a8.png" sizes="114x114" />
+<link rel="apple-touch-icon" type="image/png" href="https://d23g4mi0z7gexh.cloudfront.net/assets/apple-icon-120x120-4b9a82ec6e587ef124ed775d37ca422b6d021d1828c2875cd3835b7867caae59.png" sizes="120x120" />
+<link rel="apple-touch-icon" type="image/png" href="https://d23g4mi0z7gexh.cloudfront.net/assets/apple-icon-144x144-7633264d5152865de2c7f788c2843587ad53383c43817cec74f28f88b84638a2.png" sizes="144x144" />
+<link rel="apple-touch-icon" type="image/png" href="https://d23g4mi0z7gexh.cloudfront.net/assets/apple-icon-152x152-f8240aa8d4152fce5402d6ffad332ab3e5ee9fe0159e3156d89c9a6f12591293.png" sizes="152x152" />
+<link rel="apple-touch-icon" type="image/png" href="https://d23g4mi0z7gexh.cloudfront.net/assets/apple-icon-180x180-86317014e5fd7bd84defd6057fa700a8a104133b7dc061991c570e1f392cc1a0.png" sizes="180x180" />
+<link rel="icon" type="image/png" href="https://d23g4mi0z7gexh.cloudfront.net/assets/android-icon-192x192-bfb667af763d65b6f5c4123c45ad450a1e2dfc52ad6bc3ba9c5993996fbe050b.png" sizes="192x192" />
+<link rel="icon" type="image/png" href="https://d23g4mi0z7gexh.cloudfront.net/assets/favicon-32x32-e32c892a6da2c969473f4522b9971ca0c32c3fa3bbb816b170a5375846370c37.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://d23g4mi0z7gexh.cloudfront.net/assets/favicon-96x96-72f00a867e88b695a820a1772877e5be428549e21bbcd95e0e87c78c035a3d31.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="https://d23g4mi0z7gexh.cloudfront.net/assets/favicon-16x16-2d91892df738b109bd2f2df6e0d4924642eb9538613c87a0f2ca1c321455b633.png" sizes="16x16" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" id="et-builder-googlefonts-css" href="https://fonts.googleapis.com/css?family=Bree+Serif:400|Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic&amp;subset=latin,latin-ext" type="text/css" media="all">
+  <link rel="stylesheet" media="all" href="https://d23g4mi0z7gexh.cloudfront.net/assets/application-858912113c1de2907efe821a5ce27c356287df92bf7c723493f6c8065fc5f74c.css" />
+
+  <!-- JavaScript -->
+  <script src="https://d23g4mi0z7gexh.cloudfront.net/assets/application-df0296a69e8e53c31030fa1115be6dd28cb77bb01e3e0e223f4dbd59c6dad0ba.js"></script>
+</head>
+
+
+<body>
+  <!-- Header -->
+  
+<!-- Header -->
+<header id="container-header" class="container-fluid">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand" href="https://cocoacasts.com/">
+        <img height="40" src="https://d23g4mi0z7gexh.cloudfront.net/assets/logo-only-6de353b68d630360eec8ada0d5b652c64afad40fa4fe1596195de436aab3d353.svg" alt="Logo only" />
+        <span class="wordmark">Cocoacasts</span>
+      </a>
+
+      <!-- Navigation Links -->
+      <ul id="nav-links" class="navbar-nav ml-auto">
+
+        <li class="nav-item"><a id="link-blog" class="nav-link" href="/blog">What&#39;s New</a></li>
+        <li class="nav-item"><a id="link-library" class="nav-link" href="/library">Library</a></li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="/signup">Sign Up</a>
+          </li>
+
+          <li class="nav-item">
+          <a class="nav-link" href="/signin">Sign In</a>
+          </li>
+
+      </ul>
+
+    </nav>
+    <nav class="navbar navbar-expand-lg pt-0">
+      <!-- Search Form -->
+      <form class="search" action="/search" method="get">
+        <input type="search" id="search" name="search" class="search form-control" autocomplete="off" spellcheck="false" role="combobox" placeholder="Search Cocoacasts">
+      </form>
+    </nav>
+  </div>
+</header>
+
+
+  
+  <article id="post" class="show" data-title="What Is a Singleton and How To Create One In Swift">
+      <div id="container-video" class="container-fluid mb-4 ">
+  <div class="container">
+    <!-- Content -->
+    <div id='vimeo' data-id='80' data-remote-id='250756688'></div>
+  </div>
+</div>
+
+<main class="container">
+  <div class="row">
+
+    <!-- Column Left -->
+    <div class="col-md-2"></div>
+
+    <div class="col-md-8">
+      <!-- Metadata -->
+      <!-- Collection -->
+
+<!-- Title -->
+<h1 class="tutorial">What Is a Singleton and How To Create One In Swift</h1>
+
+  <!-- Metadata -->
+  <p class="metadata">by
+    <a href="/author/bartjacobs">Bart Jacobs</a> |
+    Jan 15, 2018 |
+    <a href="/category/patterns">Patterns</a>
+    <br>
+    <span class="updated">Last Updated on Jan 17, 2018</span>
+  </p>
+  <p class="metadata badges">
+    <span class="badge badge-swift">Swift 4</span>
+    <span class="badge badge-xcode">Xcode 9</span>
+    <span class="badge badge-platform">iOS 11</span>
+  </p>
+
+
+      <!-- Collection -->
+      
+
+      <!-- Content -->
+      <div class="content">
+  <!-- Resources -->
+  
+
+  <!-- Content -->
+  <p>The singleton pattern is a widely used design pattern in software development. Despite its popularity, it&#39;s often considered an anti-pattern. Why is that? In this episode, I explain what the singleton pattern entails and how to create singletons in Swift.</p>
+
+<h2>What Is a Singleton</h2>
+
+<p>Singletons are easy to understand. The singleton pattern guarantees that only one instance of a class is instantiated. That&#39;s simple. Right?</p>
+
+<blockquote>
+<p>The singleton pattern guarantees that only one instance of a class is instantiated.</p>
+</blockquote>
+
+<p>If you&#39;ve worked with Apple&#39;s frameworks, then chances are that you&#39;ve already used the singleton pattern. Take a look at these examples. They probably look familiar.</p>
+
+<pre><code class="language-swift">// Shared URL Session
+let sharedURLSession = URLSession.shared
+
+// Default File Manager
+let defaultFileManager = FileManager.default
+
+// Standard User Defaults
+let standardUserDefaults = UserDefaults.standard
+
+// Default Payment Queue
+let defaultPaymentQueue = SKPaymentQueue.default()
+</code></pre>
+
+<p>The singleton pattern is a very useful pattern. There are times that you want to make sure only one instance of a class is instantiated and that your application only uses that instance. That&#39;s the primary and only goal of the singleton pattern.</p>
+
+<p>The default payment queue of the <strong>StoreKit</strong> framework is a fine example. An application should never create an instance of the <code>SKPaymentQueue</code> class. The operating system uses the <strong>StoreKit</strong> framework to create a payment queue, which your application can use. The default payment queue is accessible through the <code>default()</code> class method of the <code>SKPaymentQueue</code> class. This is a good example of how the singleton pattern should be applied.</p>
+
+<h2>Global Access</h2>
+
+<p>But the singleton pattern has a side effect that&#39;s often the true reason for adopting the singleton pattern, <strong>global access</strong>. But having global access to the singleton object is no more than a side effect of the singleton pattern.</p>
+
+<p>Unfortunately, many developers use the singleton pattern to have easy access to the singleton object from anywhere in their project. The default payment queue is accessible through the <code>default()</code> class method. This means that any object in a project can access the default payment queue. While this is convenient, that convenience comes at a price.</p>
+
+<p>If you want to learn more about the problems surrounding the singleton pattern, then I recommend reading <a href="https://cocoacasts.com/are-singletons-bad/">Are Singletons Bad</a>. In that article, I discuss this topic in more detail.</p>
+
+<h2>How to Create a Singleton In Swift</h2>
+
+<p>In this episode, I list two recipes for implementing the singleton pattern in Swift. The first implementation shouldn&#39;t be used, though. It merely illustrates a few concepts of the Swift language.</p>
+
+<h3>Global Variables</h3>
+
+<p>The most straightforward technique to create a singleton is by defining a global variable.</p>
+
+<pre><code class="language-swift">let sharedNetworkManager = NetworkManager(baseURL: API.baseURL)
+
+class NetworkManager {
+
+    // MARK: - Properties
+
+    let baseURL: URL
+
+    // Initialization
+
+    init(baseURL: URL) {
+        self.baseURL = baseURL
+    }
+
+}
+</code></pre>
+
+<p>By defining a variable in the global namespace of the project, any object in the module has access to the singleton object. We could, for example, access the singleton object in the <code>application(_:didFinishLaunchingWithOptions:)</code> method of the <code>AppDelegate</code> class.</p>
+
+<pre><code class="language-swift">func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -&gt; Bool {
+    print(sharedNetworkManager)
+    return true
+}
+</code></pre>
+
+<p>In Swift, global variables are initialized lazily. This means that the initializer is run the first time the global variable is referenced.</p>
+
+<p>An added benefit of Swift&#39;s approach is that the initialization is performed using the <code>dispatch_once</code> function. It guarantees that the initializer is invoked only once. That&#39;s important since you only want to initialize the singleton object once.</p>
+
+<p>Using a global variable has several shortcomings. The most important problem is cluttering the global namespace. Another downside is that the initializer of the <code>NetworkManager</code> class cannot be declared private. This means that multiple instances of the class <em>can</em> be instantiated. Let me show you a much better, and my preferred, implementation in Swift.</p>
+
+<h3>Static Property and Private Initializer</h3>
+
+<p>A few years ago, Swift introduced static properties and access control to the language. This opened up an alternative approach to implementing the singleton pattern in Swift. It&#39;s much cleaner and elegant than using a global variable. Take a look at the updated example.</p>
+
+<pre><code class="language-swift">class NetworkManager {
+
+    // MARK: - Properties
+
+    static let shared = NetworkManager(baseURL: API.baseURL)
+
+    // MARK: -
+
+    let baseURL: URL
+
+    // Initialization
+
+    private init(baseURL: URL) {
+        self.baseURL = baseURL
+    }
+
+}
+</code></pre>
+
+<p>Accessing the singleton is intuitive and it clearly conveys that we&#39;re dealing with a singleton.</p>
+
+<pre><code class="language-swift">func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -&gt; Bool {
+    print(NetworkManager.shared)
+    return true
+}
+</code></pre>
+
+<p>Several implementation details have changed. First, the initializer is private. It means that only the <code>NetworkManager</code> class can create instances of itself. That&#39;s a significant advantage.</p>
+
+<p>Second, we declared the <code>shared</code> static constant property. This property gives other objects access to the singleton object of the <code>NetworkManager</code> class.</p>
+
+<p>It isn&#39;t necessary to mark static properties with the <code>lazy</code> keyword. Remember what I said earlier, the initializer of global variables and static properties are executed lazily by default. That&#39;s another benefit.</p>
+
+<p>I want to share one more implementation of the singleton pattern. This implementation is a bit more complex. The main difference is that the singleton object is instantiated in a closure, allowing for a more complex initialization and configuration of the singleton object.</p>
+
+<pre><code class="language-swift">class NetworkManager {
+
+    // MARK: - Properties
+
+    private static var sharedNetworkManager: NetworkManager = {
+        let networkManager = NetworkManager(baseURL: API.baseURL)
+
+        // Configuration
+        // ...
+
+        return networkManager
+    }()
+
+    // MARK: -
+
+    let baseURL: URL
+
+    // Initialization
+
+    private init(baseURL: URL) {
+        self.baseURL = baseURL
+    }
+
+    // MARK: - Accessors
+
+    class func shared() -&gt; NetworkManager {
+        return sharedNetworkManager
+    }
+
+}
+</code></pre>
+
+<p>The static property is declared private. The singleton object is accessible through the <code>shared()</code> class method.</p>
+
+<pre><code class="language-swift">func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -&gt; Bool {
+    print(NetworkManager.shared())
+    return true
+}
+</code></pre>
+
+<h2>Cocoa and Singletons</h2>
+
+<p>With these implementations in mind, we have mimicked the interface many Cocoa frameworks have adopted in Swift.</p>
+
+<pre><code class="language-swift">// Shared URL Session
+let sharedURLSession = URLSession.shared
+
+// Default File Manager
+let defaultFileManager = FileManager.default
+
+// Standard User Defaults
+let standardUserDefaults = UserDefaults.standard
+
+// Default Payment Queue
+let defaultPaymentQueue = SKPaymentQueue.default()
+</code></pre>
+
+<h2>Are Singletons Bad</h2>
+
+<p>In <a href="https://cocoacasts.com/are-singletons-bad/">Are Singletons Bad</a>, I explain in detail what type of problems the singleton pattern can introduce in a project. My advice is to use singletons sparingly. Very sparingly. If you&#39;re about to create a singleton, take a moment and step back. Is there another option you may be overlooking? Is it absolutely necessary to use the singleton pattern?</p>
+
+<p>Even though there&#39;s nothing inherently wrong with singletons, most developers use it for the wrong reasons, that is, convenience. They disguise global variables as singletons.</p>
+
+<h2>Dependency Injection</h2>
+
+<p>Even if you decide to use singletons in a project, that doesn&#39;t mean you <em>have to</em> access them from anywhere in your project. You can still use dependency injection to pass the singleton object to the objects that need it.</p>
+
+<p>By adopting dependency injection to pass singletons around, the interface of your class remains clear and transparent. In other words, the interface of the class describes its dependencies. This is very, very useful. It immediately shows which objects the class needs to perform its duties.</p>
+
+<p>One of the things I miss about Objective-C is the header file. The header file summarizes the public interface of a class, including the dependencies of the class. This is sometimes less obvious in Swift.</p>
+
+
+  <!-- Resources -->
+  
+</div>
+
+
+
+      <!-- Collection After -->
+      
+    </div>
+
+    <!-- Column Right -->
+    <div class="col-md-2"></div>
+
+  </div>
+</main>
+
+</article>
+
+
+  <!-- Footer -->
+  <div id="container-footer" class="container-fluid">
+  <footer class="container">
+    <div class="row">
+      <div class="col-md-6 border-right">
+        <ul class="cocoacasts-plus">
+          <li><a href="/learn-the-four-swift-patterns-i-swear-by">Learn the Four Swift Patterns I Swear By</a></li>
+          <li><a href="/cocoacasts-plus">Cocoacasts Plus</a></li>
+            <li>
+                <a id="link-signup" href="/signup">Sign Up</a>
+
+              &middot;
+
+              <a id="link-signin" href="/signin">Sign In</a>
+            </li>
+        </ul>
+
+        <p>&copy; Code Foundry BVBA 2016-2020</p>
+        <p><a href="/privacy-policy">Privacy Policy</a> &middot; <a href="/terms-and-conditions">Terms and Conditions</a></p>
+      </div>
+      <div class="col-md-3">
+        <ul>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="https://leanpub.com/u/bartjacobs">Books</a></li>
+          <li><a href="/videos">Videos</a></li>
+          <li><a href="/collections">Collections</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul>
+          <li><a href="/about-cocoacasts">About</a></li>
+          <li><a href="https://twitter.com/_bartjacobs">Twitter</a></li>
+          <li><a href="https://github.com/bartjacobs">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script type="text/javascript">
+  var _dcq = _dcq || [];
+  var _dcs = _dcs || {};
+  _dcs.account = '6470372';
+
+  (function() {
+    var dc = document.createElement('script');
+    dc.type = 'text/javascript'; dc.async = true;
+    dc.src = '//tag.getdrip.com/6470372.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(dc, s);
+  })();
+</script>
+
+<script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101148206);</script>
+<script async src="//static.getclicky.com/js"></script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101148206ns.gif" /></p></noscript>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128076458-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-128076458-1');
+</script>
+
+<script>var om4425_20572,om4425_20572_poll=function(){var r=0;return function(n,l){clearInterval(r),r=setInterval(n,l)}}();!function(e,t,n){if(e.getElementById(n)){om4425_20572_poll(function(){if(window['om_loaded']){if(!om4425_20572){om4425_20572=new OptinMonsterApp();return om4425_20572.init({"a":20572,"staging":0,"dev":0,"beta":0});}}},25);return;}var d=false,o=e.createElement(t);o.id=n,o.src="https://a.optnmstr.com/app/js/api.min.js",o.async=true,o.onload=o.onreadystatechange=function(){if(!d){if(!this.readyState||this.readyState==="loaded"||this.readyState==="complete"){try{d=om_loaded=true;om4425_20572=new OptinMonsterApp();om4425_20572.init({"a":20572,"staging":0,"dev":0,"beta":0});o.onload=o.onreadystatechange=null;}catch(t){}}}};(document.getElementsByTagName("head")[0]||document.documentElement).appendChild(o)}(document,"script","omapi-script");</script>
+
+
+<script id="stripejs" src="https://js.stripe.com/v3/" async></script>
+
+</body>
+</html>

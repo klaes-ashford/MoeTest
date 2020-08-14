@@ -20,6 +20,7 @@
     if (self) {
         self.presenter = presenter;
         self.source = [[ArticleSource alloc] init];
+        self.detailsSource = [[ArticleDetailsSource alloc] init];
     }
     return self;
 }
@@ -32,7 +33,7 @@
 }
 
 - (void)articleListDidSelect:(nonnull MEArticle *)article {
-    self.detailsCoordinator = [[ArticleDetailsCoordinator alloc] initWith:self.presenter :article];
+    self.detailsCoordinator = [[ArticleDetailsCoordinator alloc] initWith:self.presenter :article :self.detailsSource];
     [self.detailsCoordinator start];
 }
 

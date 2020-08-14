@@ -16,4 +16,5 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableveiw;
 @property (nonatomic) id <Source> source;
 @property (nonatomic) id <ArticleListDelegate> delegate;
+@property (strong, nonatomic) MEArticle * article;
 @end
